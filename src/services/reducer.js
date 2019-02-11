@@ -8,11 +8,11 @@ export const toString = (x) => {
 }
 
 export const toObject = (x) => {
-  if (x === '') return { a: null, b: null, t: null }
+  if (x === '' || isNull(x)) return { a: null, b: null, t: null }
 
-  let sa = x.match(/(a|A)([0-9]{1,})/) 
-  let sb = x.match(/(z|Z|b|B)([0-9]{1,})/) 
-  let st = x.match(/(t|T)([0-9]{1,})/) 
+  let sa = x.match(/(a|A)([0-9]{1,})/)
+  let sb = x.match(/(z|Z|b|B)([0-9]{1,})/)
+  let st = x.match(/(t|T)([0-9]{1,})/)
 
   let a = sa ? parseInt(sa[2], 10) : null
   let t = st ? parseInt(st[2], 10) : null
