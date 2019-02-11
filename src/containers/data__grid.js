@@ -51,21 +51,19 @@ class DataGrid extends React.Component {
   // render an array of results
   render() {
     let numResults = this.props.rootStore.routes[0] < 2 ? 30 : 4
-    this.keys      = blocs(numResults)
-    this.columns   = columns(numResults)
+    let tableWidth = 408 + (48 * numResults) 
     this.rows      = this.handleFilter()
-    let height     = this.setHeight(this.rows.length)
-    // let rows = this.state.rows
-    return (<div style={{ width: 1600 }}>
-      <ReactDataGrid
-        style={{ width: 800 }}
-        columns={this.columns}
-        rowGetter={(i) => this.rows[i]}
-        rowsCount={this.rows.length}
-        minHeight={height}
-        enableCellSelect={true} 
-        onGridRowsUpdated={this.handleRowChange}
-      /></div>
+    return (
+      <div style={{ width: tableWidth, margin: '0 auto' }}>
+        <ReactDataGrid
+          columns={columns(numResults)}
+          rowGetter={(i) => this.rows[i]}
+          rowsCount={this.rows.length}
+          minHeight={this.setHeight(this.rows.length)}
+          enableCellSelect={true} 
+          onGridRowsUpdated={this.handleRowChange}
+        />
+      </div>
     )
   }
 
