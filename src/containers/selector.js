@@ -16,16 +16,15 @@ const StyledSelect = styled(Select)`
   font              : 1.0rem/1.0rem SansBold, sans-serif !important;
 `
 
-const renderMenuItems = (x, i) => <MenuItem key={i} value={x.values[0]} data={x.values}>{x.name}</MenuItem>
+const renderMenuItems = (x, i) => <MenuItem key={x.key} value={x.key} data={x.values}>{x.name}</MenuItem>
 
 class Selector extends React.Component {
   render() {
-    let val = this.props.rootStore.requests.get(this.props.name).slice()[0]
     return (
       <Wrapper>
         <StyledSelect
           style={{ color: 'white' }}
-          value={val}
+          value={this.props.rootStore.uistate.get(this.props.name) || 0}
           onChange={this.handleChange}>
           {this.props.items.map(renderMenuItems)}
         </StyledSelect>
@@ -35,6 +34,7 @@ class Selector extends React.Component {
   handleChange = (e, child) => { 
     let val = child.props.data 
     let key = this.props.name
+    this.props.rootStore.setUIState({ [key]: child.props.value })
     this.props.rootStore.setRequestParams({ [key]: val })
     this.props.rootStore.fetchResults()
   }

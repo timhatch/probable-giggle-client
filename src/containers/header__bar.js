@@ -25,22 +25,30 @@ const Title = styled.div`
   font              : 1.25rem/1.25rem SansBold, sans-serif !important;
 `
 
+const comps = [
+  { key: 0, values: 1, name: 'Test Comp'},
+  { key: 1, values: 4, name: '2018 CWIF' },
+  { key: 2, values: 6, name: '2019 CWIF' },
+]
+
 const routes = [ 
-  { values: [0], name: 'Qualification' }, 
-  { values: [2], name: 'Semifinal' }, 
-  { values: [3], name: 'Final' }
+  { key: 0, values: [0], name: 'Qualification' }, 
+  { key: 1, values: [2], name: 'Semifinal' }, 
+  { key: 2, values: [3], name: 'Final' }
 ]
 
 const cats = [ 
-  { values: [5], name: 'Female' }, 
-  { values: [6], name: 'Male' }
+  { key: 0, values: [5], name: 'Female' }, 
+  { key: 1, values: [6], name: 'Male' },
+  { key: 2, values: [6, 5], name: 'Combined' }
 ]
 
 const HeaderBar = () => (
   <MuiThemeProvider theme={theme}>
     <AppBar position='fixed'>
       <Toolbar>
-        <Title>Results Entry</Title>
+        <Title>Results</Title>
+        <Selector items={comps}  name='comp' />
         <Selector items={routes} name='routes' />
         <Selector items={cats}   name='cats' />
         <FilterBar />  
