@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 // Default URL (defined in (.env.development and .env.production)
-const _url = process.env.REACT_APP_RESULTS_ENDPOINT
+const results_url = process.env.REACT_APP_RESULTS_ENDPOINT
+const session_url = process.env.REACT_APP_SESSION_ENDPOINT
 
 // Fetch data from Perseus
 // - axios defaults to { type: 'json' } so don't specify this
@@ -11,17 +12,17 @@ const _url = process.env.REACT_APP_RESULTS_ENDPOINT
 //   but axios-cancel appears to remove requewstIds when complete, so concurrently
 //   running requests are cancelled
 //
-const fetch = async (query) => axios.get(_url, { 
+const fetch = async (query) => axios.get(results_url, { 
   params: { time: new Date().getHours(), ...query },
   requestId: query.type || JSON.stringify(query)
 })
 
-const update = async (data) => axios.put(`${_url}/person`, data)
+const update = async (data) => axios.put(`${results_url}/person`, data)
 
 // Class definition
 class PerseusHTTPService {
   static async fetchDefaults() {
-    let response = await axios.get('http://127.0.0.1/session')
+    let response = await axios.get(session_url)
     console.log(response.data)
   }
   // Fetch the result list for a specific comp/category/route combination
