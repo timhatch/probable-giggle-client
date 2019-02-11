@@ -8,7 +8,7 @@ import { toString, toObject, resultAsString }   from '../services/reducer'
 
 const personalia = [
   { key: 'per_id',    name: 'ID',        width: 72 },
-  { key: 'lastname',  name: 'Lastname',  width: 100 },
+  { key: 'lastname',  name: 'Lastname',  width: 96 },
   { key: 'firstname', name: 'Firstname', width: 96 },
   { key: 'nation',    name: 'Code',      width: 48 }
 ]
@@ -19,7 +19,6 @@ const columns = (num) => {
   let results = blocs(num).map((x) => ({ key: x, name: x, editable: true, width: 48 }))
   return personalia.concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
 }
-
 
 const resultsParser = (route) => route.map((x) => {
   let r = x.result_jsonb || {}
