@@ -1,10 +1,11 @@
 import React    from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM     from 'react-dom';
+
 import { Provider } from 'mobx-react'
 
 import HeaderBar    from './containers/header__bar'
-import DataGrid from './containers/data__grid'
-import Store    from './store' 
+import DataGrid     from './containers/data__grid'
+import Store        from './store' 
 
 import HTTPService  from './services/perseus-accessor'
 
