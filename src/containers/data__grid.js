@@ -82,18 +82,9 @@ class DataGrid extends React.Component {
 
   // update method used by ReactDataGrid
   handleRowChange = ({ fromRow, toRow, updated }) => {
-    let person       = this.rows.slice()[fromRow]
+    let { wet_id, grp_id, route, per_id } = this.rows.slice()[fromRow]
     let result_jsonb = Object.entries(updated).map(([k, v]) => ({ [k]: toObject(v) }))[0]
-    let data         = { ...(this.getParams()), ...{ per_id: person.per_id }, result_jsonb }
-    this.props.rootStore.updateResults(data)
-  }
-
-  getParams = () => {
-    let store  = this.props.rootStore
-    let wet_id = store.comp
-    let route  = store.routes[0]
-    let grp_id = store.grpid
-    return { wet_id, route, grp_id }
+    this.props.rootStore.updateResults({ wet_id, grp_id, route, per_id, result_jsonb })
   }
 }
 

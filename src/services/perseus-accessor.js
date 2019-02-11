@@ -27,10 +27,11 @@ class PerseusHTTPService {
   // Fetch the result list for a specific comp/category/route combination
   // @params = comp (WetId), cat (GrpId) and route (route)
   static async fetchResults(query) {
-    const uuid  = `${query.cat}.${query.route}`
+    const uuid   = `${query.cat}.${query.route}`
+    const params = { wet_id: query.comp, grp_id: query.cat, route: query.route }
     try {
-      let response = await fetch({ wet_id: query.comp, grp_id: query.cat, route: query.route })
-      return { [uuid]: response.data }
+      let response = await fetch(params)
+      return { [uuid]: response.data.map((x) => ({ ...x, ...params })) }
     } catch (e) {
       return null
     }
