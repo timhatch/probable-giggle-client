@@ -1,0 +1,45 @@
+/**
+ *  Customise appearance of table borders.
+ *
+**/
+.react-grid-Main, .react-grid-Grid {
+  outline   : none;
+  border    : none;
+}
+
+/**
+ *  Customise appearance of text in editor and header cells.
+ *
+**/
+.react-grid-HeaderRow {
+  font      : 0.85rem/1.0rem SansBold, sans-serif;
+}
+
+.react-grid-Cell__value {
+  font      : 0.85rem/1.0rem SansRegular, sans-serif;
+}
+
+/**
+ *  Customise appearance of cell which has current focus.
+ *
+**/
+.rdg-selected {
+  border    : none;
+  background-color: #7FFF0044;
+}
+
+/**
+ *  Customise appearance of cell being actively edited.
+ *
+**/
+.rdg-editor-container input.editor-main, select.editor-main {
+  width     : 40px;
+
+  padding   : 0 0 0 8px;
+
+  font      : 0.85rem/1.0rem SansBold, sans-serif;
+  color     : red;
+
+  border    : none;
+  outline   : 1px solid red;
+}

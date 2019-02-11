@@ -9,8 +9,9 @@ import Store        from './store'
 
 import HTTPService  from './services/perseus-accessor'
 
-import './typography.css';
-import './index.css';
+import './typography.css'
+import './react-data-grid.css'
+import './index.css'
 
 const store = new Store(HTTPService, { storageKey: 'test' })
 
