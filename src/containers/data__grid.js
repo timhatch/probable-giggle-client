@@ -62,6 +62,7 @@ class DataGrid extends React.Component {
           minHeight={this.setHeight(this.rows.length)}
           enableCellSelect={true} 
           onGridRowsUpdated={this.handleRowChange}
+          enableDragAndDrop={false}
         />
       </div>
     )
