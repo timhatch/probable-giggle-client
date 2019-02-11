@@ -31,12 +31,15 @@ class Store {
     // Prefer using shallow Map and Array objects (as changes from eGroupware are 'all or nothing'
     // Load any request data in localStorage (use the spread operator or Object.assign
     const defs = { cats, comp, routes, ...(JSON.parse(localStorage.getItem(this.name))) }
+    const uist = { ...JSON.parse(localStorage.getItem(`${this.name}-ui`)) }
 
     // Application data observables
     this.requests = observable.map(defs)        // Stored params for data requests
     this.results  = observable.map(new Map(), { deep: false })   // Retrieved results data
     // Application state observables
     this.loading  = observable.box(false)       // Used for loading state
+
+    this.uistate  = observable.map(uist)
     this.lastname = observable.box('')          // Filter value
   }
 
@@ -124,6 +127,17 @@ class Store {
   updateFilterValue(value) {
     runInAction('filter', () => {
       this.lastname.set(value)
+    })
+  }
+
+  // setUIState :: (Object) -> ()
+  // Update the uistate Observable Map.
+  // Take as an argument an object consisting of any combination of properties, e.g.
+  //  - group : (Integer)   the set of results for display
+  setUIState(obj) {
+    runInAction('uistate', () => {
+      Object.keys(obj).forEach((x) => this.uistate.set(x, obj[x]))
+      localStorage.setItem(`${this.name}-ui`, JSON.stringify(this.uistate))
     })
   }
 }
