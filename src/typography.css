@@ -1,0 +1,19 @@
+/* Font definitions */
+
+@font-face {
+  font-family : 'SansBold';
+  font-style  : normal;
+  src: local('?'), url('./fonts/SourceSansPro-Semibold.otf');
+}
+
+@font-face {
+  font-family : 'SansRegular';
+  font-style  : normal;
+  src: local('?'), url('./fonts/SourceSansPro-Regular.otf');
+}
+
+@font-face {
+  font-family : 'SansLight';
+  font-style  : normal;
+  src: local('?'), url('./fonts/SourceSansPro-Light.otf');
+}
