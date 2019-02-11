@@ -25,7 +25,8 @@
 **/
 .rdg-selected {
   border    : none;
-  background-color: #7FFF0044;
+  /* background-color: #7FFF0044; */
+  background-color: #ffc10744;
 }
 
 /**
