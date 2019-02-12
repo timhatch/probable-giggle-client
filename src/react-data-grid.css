@@ -13,6 +13,7 @@
 **/
 .react-grid-HeaderRow {
   font      : 0.85rem/1.0rem SansBold, sans-serif;
+  height    : 64px;
 }
 
 .react-grid-Cell__value {
