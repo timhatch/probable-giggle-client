@@ -15,7 +15,8 @@ const Wrapper = styled.div`
 const StyledSelect = styled(Select)`
   font              : 1.0rem/1.0rem SansBold, sans-serif !important;
 `
-
+// renderMenuItems :: (x, i) -> (r)
+// Pass in a data object {x} and return a react menuitem component with associated properties
 const renderMenuItems = (x, i) => <MenuItem key={x.key} value={x.key} data={x.values}>{x.name}</MenuItem>
 
 class Selector extends React.Component {
@@ -31,11 +32,13 @@ class Selector extends React.Component {
       </Wrapper>
     )}
 
+  // handleChange :: (e, c) -> ()
+  // For any change in the selector, update the ui-state, modify the request parameters
+  // and then send a data request
   handleChange = (e, child) => { 
-    let val = child.props.data 
     let key = this.props.name
     this.props.rootStore.setUIState({ [key]: child.props.value })
-    this.props.rootStore.setRequestParams({ [key]: val })
+    this.props.rootStore.setRequestParams({ [key]: child.props.data })
     this.props.rootStore.fetchResults()
   }
 }
