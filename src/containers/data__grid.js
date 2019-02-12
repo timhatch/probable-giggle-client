@@ -13,11 +13,15 @@ const PERSONALIA = [
   { key: 'nation',    name: 'Code',      width: 48 }
 ]
 
-const resultsParser = (route) => route.map((x) => {
-  let r = x.result_jsonb || {}
-  let s = Object.entries(r).filter((x) => !!x).map(([k, v]) => ({ [k]: toString(v) }))
-  let t = resultAsString(x.sort_values || [])
-  return Object.assign({ result: t }, x, ...s)
+// resultParser :: ([{a}]) -> ([{a*}])
+// Return an arrray of results containing, in addition to the original properties, a 'result'
+// property representing the result as a string, e.g. 'T4 z4 6 4' and individual results for
+// each boulder, e.g. 'p1' = 't1 z1', respectively parsed from the 'aort_values' and 
+// 'result_jsonb' properties
+const resultsParser = (route) => route.map((person) => {
+  let array  = Object.entries(person.result_jsonb || {}).map(([k, v]) => ({ [k]: toString(v) }))
+  let result = resultAsString(person.sort_values || [])
+  return Object.assign({result}, person, ...array)
 })
 
 // byStarter :: (a, b) -> (a, b)
