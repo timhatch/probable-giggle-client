@@ -11,6 +11,9 @@ import FilterBar from './filter__bar'
 import Selector  from './selector'
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
   palette: {
     primary: {
       main: '#7b1fa2',
