@@ -102,12 +102,22 @@ class DataGrid extends React.Component {
   // connection is poor
   handleRowChange = ({ fromRow, toRow, updated }) => {
     let { wet_id, grp_id, route, per_id } = this.rows.slice()[fromRow]
-    // FIXME: Add method here to retrieve the "original" result for the climber (if it exists) and
-    // modify that, rather than discarding it completely
-    let result_jsonb = Object.entries(updated).map(([k, v]) => ({ [k]: toObject(v) }))[0]
+    let result_jsonb = this.mergeResults({ fromRow, updated })
     this.props.rootStore.updateResults({ wet_id, grp_id, route, per_id, result_jsonb })
   }
+
+  // mergeResults :: ({a, b}) -> ({c})
+  // merge updated results into the old result and return that. This allows us to preserve
+  // attempts (and other) data where the purpose of the entry is to update only part of the
+  // result
+  mergeResults = ({ fromRow, updated }) => {
+    let rslt = this.rows.slice()[fromRow].result_jsonb
+    let curr = Object.entries(updated)[0]
+    let prev = rslt ? rslt[curr[0]] : {}
+    return { [curr[0]]: {...prev, ...toObject(curr[1]) } }
+  }
 }
+
 
 export default inject('rootStore')(observer(DataGrid))
 

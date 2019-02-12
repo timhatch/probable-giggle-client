@@ -1,6 +1,11 @@
 // Test to see whether an object is undefined or null (but not a 0 value
 const isNull = (x) => (x === null || typeof x === 'undefined')
 
+// parseObject :: (a) -> (a*)
+// Filter out any object properties will a null value
+const parseObject = (o) => Object.entries(o)
+  .filter(([k, v]) => !isNull(v))
+  .reduce((a, c) => {(a[c[0]] = c[1]); return a }, {})
 
 // toString :: (a) -> (b)
 // Parse a result object { a: value, b: value, t: value }, and return a string
@@ -29,7 +34,8 @@ export const toObject = (x) => {
   let t = st ? parseInt(st[2], 10) : null
   let b = sb ? parseInt(sb[2], 10) : (st ? t : null)
 
-  return a ? { b, t } : { a, b, t }
+  // Return the resulting object`
+  return parseObject({ a, b, t })
 }
 
 // resultString :: ([]) -> (a)
