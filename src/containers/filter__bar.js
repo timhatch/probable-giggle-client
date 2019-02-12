@@ -19,7 +19,7 @@ const Name = styled(InputBase)`
   color             : white !important;
   font              : 1.0rem/1.0rem SansBold, sans-serif !important;
 `
-
+// Class definition
 class FilterBar extends React.Component {
   render() {
     return (
@@ -29,6 +29,8 @@ class FilterBar extends React.Component {
     </Search>
   )}
 
+  // addFilter :: (e) -> ()
+  // Update the mobx filter value based on use input
   addFilter = (e) => this.props.rootStore.updateFilterValue(e.target.value)
 }
 
