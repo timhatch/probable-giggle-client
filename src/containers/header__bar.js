@@ -1,10 +1,9 @@
 import React    from 'react';
 
-import styled               from 'styled-components'
+import styled   from 'styled-components'
 
 import AppBar   from '@material-ui/core/AppBar'
 import Toolbar  from '@material-ui/core/Toolbar';
-
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import FilterBar from './filter__bar'
@@ -25,7 +24,7 @@ const theme = createMuiTheme({
 })
 
 const Title = styled.div`
-  font              : 1.25rem/1.25rem SansBold, sans-serif !important;
+  font : 1.25rem/1.25rem SansBold, sans-serif !important;
 `
 // competition menu items
 // FIXME: WE could replace this by retrieving the relevant list from the store
@@ -46,7 +45,7 @@ const routes = [
 const cats = [ 
   { key: 0, values: [5], name: 'Female' }, 
   { key: 1, values: [6], name: 'Male' },
-  { key: 2, values: [6, 5], name: 'Combined' }
+  { key: 2, values: [6, 5], name: 'All Data' }
 ]
 
 // Functional component definition
