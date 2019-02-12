@@ -22,7 +22,7 @@ const resultsParser = (route) => route.map((x) => {
 
 // byStarter :: (a, b) -> (a, b)
 // Lambda/block to order array in place by start-order, then lastname and finally
-// (if no start-order or same names, by per_id (which should be unique
+// (if no start-order or same names, by per_id (which must be unique)
 const byStarter = (a, b) => {
   if (a.start_order > b.start_order) return 1
   if (a.start_order < b.start_order) return -1
