@@ -8,6 +8,14 @@
 }
 
 /**
+ *  Customise appearance of table scrollbars.
+ *
+**/
+.react-grid-Canvas {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+/**
  *  Customise appearance of text in editor and header cells.
  *
 **/
@@ -32,9 +40,16 @@
 
 /**
  *  Customise appearance of cell being actively edited.
- *
+ *  n.b. the default results cell width is 48px, so here we do a little hack to
+ *  force the editor text to indent slightly
 **/
+
+.rdg-editor-container {
+  position  : absolute !important;
+}
+
 .rdg-editor-container input.editor-main, select.editor-main {
+  position  : absolute !important;
   width     : 40px;
 
   padding   : 0 0 0 8px;
