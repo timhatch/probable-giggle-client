@@ -7,10 +7,10 @@ import { toString, toObject, resultAsString }   from '../services/reducer'
 
 // Constant defining core cells for display
 const PERSONALIA = [
-  { key: 'per_id',    name: 'ID',        width: 72 },
-  { key: 'lastname',  name: 'Lastname',  width: 96 },
-  { key: 'firstname', name: 'Firstname', width: 96 },
-  { key: 'nation',    name: 'Code',      width: 48 }
+  { width: 72, key: 'per_id',    name: 'ID' },
+  { width: 96, key: 'lastname',  name: 'Lastname' },
+  { width: 96, key: 'firstname', name: 'Firstname' },
+  { width: 48, key: 'nation',    name: 'Code' }
 ]
 
 // resultParser :: ([{a}]) -> ([{a*}])
@@ -66,7 +66,7 @@ class DataGrid extends React.Component {
           columns={this.setColumns(numResults)}
           rowGetter={(i) => this.rows[i]}
           rowsCount={this.rows.length}
-          minHeight={this.setHeight(this.rows.length)}
+          minHeight={this.setHeight()}
           enableCellSelect={true} 
           onGridRowsUpdated={this.handleRowChange}
           enableDragAndDrop={false}
@@ -87,7 +87,7 @@ class DataGrid extends React.Component {
   // setHeight :: (int) -> (int)
   // Set the minimum height for the table element
   // n.b. the default row height is 35px. we use (num + 1) to account for the header row
-  setHeight = (num) => (num) * 36 + 64
+  setHeight = () => this.rows.length * 36 + 64
   
   // handleFIlter :: () -> ([a])
   // Read the current filter value from the mobx store, then either (a) return the first 60 results

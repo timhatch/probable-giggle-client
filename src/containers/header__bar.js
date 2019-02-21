@@ -25,6 +25,7 @@ const theme = createMuiTheme({
 
 const Title = styled.div`
   font : 1.25rem/1.25rem SansBold, sans-serif !important;
+  width: 60px;
 `
 // competition menu items
 // FIXME: WE could replace this by retrieving the relevant list from the store
