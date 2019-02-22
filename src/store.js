@@ -40,7 +40,7 @@ class Store {
     this.loading  = observable.box(false)       // Used for loading state
 
     this.uistate  = observable.map(uist)
-    this.lastname = observable.box('')          // Filter value
+    this.fString  = observable.box('')          // Filter value
   }
 
   /*
@@ -124,9 +124,9 @@ class Store {
     })
   }
 
-  updateFilterValue(value) {
+  updateFilterValue(str) {
     runInAction('filter', () => {
-      this.lastname.set(value)
+      this.fString.set(str)
     })
   }
 

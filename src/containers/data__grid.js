@@ -90,14 +90,17 @@ class DataGrid extends React.Component {
   setHeight = () => this.rows.length * 36 + 64
   
   // handleFIlter :: () -> ([a])
-  // Read the current filter value from the mobx store, then either (a) return the first 60 results
-  // if no filter has been retrieved; or (b) return all results which match the filter
+  // Read the current filter value from the mobx store, then either 
+  // (a) return the first 60 results
+  // (b) if the string is all-caps and at least 2 chars long, filter by nation
+  // (c) otherwise return all results which match the filter
   handleFilter = () => {
-    let filterValue = this.props.rootStore.lastname.get()
-    let results     = dataMapper(this.props.rootStore.results)
-    return filterValue.length === 0
-      ? results.slice(0, 60)
-      : results.filter((x) => x.lastname.match(filterValue) || x.firstname.match(filterValue))
+    let string  = this.props.rootStore.fString.get()
+    let results = dataMapper(this.props.rootStore.results)
+
+    if (string.length === 0)        return results.slice(0, 60) 
+    if (string.match(/[A-Z]{2,3}/)) return results.filter((x) => x.nation.match(string))
+    return results.filter((x) => x.lastname.match(string) || x.firstname.match(string))
   }
 
   // handleRowChange :: ({a}) -> ()
