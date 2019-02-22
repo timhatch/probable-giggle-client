@@ -10,8 +10,8 @@ const Search = styled.div`
   display           : flex;
   flex-direction    : row;
   background-color  : #ffffff44;
-  margin-left       : 2rem;
-  padding           : 0.25rem 0.5rem 0 0.5rem;
+  padding           : 0 0 0 0.5rem;
+  margin            : 0.5rem 0 0.5rem 2rem;
 `
 
 const Name = styled(InputBase)`

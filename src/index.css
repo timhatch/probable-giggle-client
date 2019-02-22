@@ -8,4 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+.FormLabelTypography {
+  font              : 0.85rem/0.85rem SansRegular, sans-serif !important;  
+}
