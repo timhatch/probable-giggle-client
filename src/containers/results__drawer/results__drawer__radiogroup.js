@@ -20,7 +20,7 @@ class RadioButtonsGroup extends React.Component {
             value={checked}
             onChange={this.handleChange}
           >
-            <FormControlLabel control={<Radio />} classes={override} value='nation'      label="Nation" />
+            <FormControlLabel control={<Radio />} classes={override} value='per_id'      label="Athlete ID" />
             <FormControlLabel control={<Radio />} classes={override} value='start_order' label="Start Order" />
             <FormControlLabel control={<Radio />} classes={override} value='result_rank' label="Rank" />
           </RadioGroup>

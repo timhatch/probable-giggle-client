@@ -5,13 +5,16 @@ import { observer, inject } from 'mobx-react'
 
 import { toString, toObject, resultAsString }   from '../services/reducer'
 
+// Titles for display columns
+const TITLE = { per_id: 'ID', start_order: 'Order', result_rank: 'Rank' }
+
 // Constant defining core cells for display
-const PERSONALIA = [
-  { width: 72, key: 'per_id',    name: 'ID' },
+const personalia = (param) => ([
+  { width: 60, key: param,       name: TITLE[param] },
   { width: 96, key: 'lastname',  name: 'Lastname' },
   { width: 96, key: 'firstname', name: 'Firstname' },
-  { width: 48, key: 'nation',    name: 'Code' }
-]
+  { width: 60, key: 'nation',    name: 'IOC' },
+])
 
 // resultParser :: ([{a}]) -> ([{a*}])
 // Return an arrray of results containing, in addition to the original properties, a 'result'
@@ -81,7 +84,8 @@ class DataGrid extends React.Component {
   setColumns = (num) => {
     const blocs   = Array.from(Array(num), (x, i) => `p${i+1}`)
     const results = blocs.map((x) => ({ key: x, name: x, editable: true, width: 48 }))
-    return PERSONALIA.concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
+    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'start_order'
+    return personalia(param).concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
   }
 
   // setHeight :: (int) -> (int)
@@ -96,7 +100,7 @@ class DataGrid extends React.Component {
   // (c) otherwise return all results which match the filter
   handleFilter = () => {
     const string  = this.props.rootStore.fString.get()
-    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'nation'
+    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'start_order'
     const sortfn  = sortBy(param)
     const results = dataMapper(this.props.rootStore.results).sort(sortfn)
 
