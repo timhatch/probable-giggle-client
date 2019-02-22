@@ -27,9 +27,9 @@ const resultsParser = (route) => route.map((person) => {
 // byStarter :: (a, b) -> (a, b)
 // Lambda/block to order array in place by start-order, then lastname and finally
 // (if no start-order or same names, by per_id (which must be unique)
-const byStarter = (a, b) => {
-  if (a.start_order > b.start_order) return 1
-  if (a.start_order < b.start_order) return -1
+const sortBy = (param) => (a, b) => {
+  if (a[param] > b[param]) return 1
+  if (a[param] < b[param]) return -1
 
   if (a.lastname > b.lastname) return 1
   if (a.lastname < b.lastname) return -1
@@ -43,7 +43,7 @@ const byStarter = (a, b) => {
 const dataMapper = (results) => {
   let arr = [...results.keys()].sort().map((x) => results.get(x))
                                .map(resultsParser)
-  return [].concat(...arr).sort(byStarter)
+  return [].concat(...arr)
 }
 
 // Class definition
@@ -95,8 +95,10 @@ class DataGrid extends React.Component {
   // (b) if the string is all-caps and at least 2 chars long, filter by nation
   // (c) otherwise return all results which match the filter
   handleFilter = () => {
-    let string  = this.props.rootStore.fString.get()
-    let results = dataMapper(this.props.rootStore.results)
+    const string  = this.props.rootStore.fString.get()
+    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'nation'
+    const sortfn  = sortBy(param)
+    const results = dataMapper(this.props.rootStore.results).sort(sortfn)
 
     if (string.length === 0)        return results.slice(0, 60) 
     if (string.match(/[A-Z]{2,3}/)) return results.filter((x) => x.nation.match(string))
