@@ -60,7 +60,8 @@ class DataGrid extends React.Component {
   // render an array of results. Set the width of the enclosing element from the 
   // numebr of boulders
   render() {
-    let numResults = this.props.rootStore.routes[0] < 2 ? 30 : 4
+    // TODO: Read this from a competition definition
+    let numResults = this.props.rootStore.routes[0] < 2 ? 5 : 4
     let tableWidth = 408 + (48 * numResults)
     this.rows      = this.handleFilter()
     return (
@@ -84,7 +85,7 @@ class DataGrid extends React.Component {
   setColumns = (num) => {
     const blocs   = Array.from(Array(num), (x, i) => `p${i+1}`)
     const results = blocs.map((x) => ({ key: x, name: x, editable: true, width: 48 }))
-    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'start_order'
+    const param   = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     return personalia(param).concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
   }
 
@@ -100,7 +101,7 @@ class DataGrid extends React.Component {
   // (c) otherwise return all results which match the filter
   handleFilter = () => {
     const string  = this.props.rootStore.fString.get()
-    const param   = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'start_order'
+    const param   = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     const sortfn  = sortBy(param)
     const results = dataMapper(this.props.rootStore.results).sort(sortfn)
 

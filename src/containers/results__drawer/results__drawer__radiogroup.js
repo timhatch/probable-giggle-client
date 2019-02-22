@@ -13,7 +13,7 @@ class RadioButtonsGroup extends React.Component {
   state = {value: 'start_order' }
 
   render() {
-    let checked = this.props.rootStore.uistate.get('resultsSettingsSortParam') || 'nation'
+    let checked = this.props.rootStore.uistate.get('resultsSortParam') || 'nation'
     return (
       <FormControl style={{ marginLeft: '2rem' }} >
           <RadioGroup
@@ -29,7 +29,7 @@ class RadioButtonsGroup extends React.Component {
   }
 
   handleChange = (e) => {
-    this.props.rootStore.setUIState({ resultsSettingsSortParam: e.target.value })
+    this.props.rootStore.setUIState({ resultsSortParam: e.target.value })
   }
 }
 
