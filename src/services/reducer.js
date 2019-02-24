@@ -1,5 +1,5 @@
 // Test to see whether an object is undefined or null (but not a 0 value
-const isNull = (x) => (x === null || typeof x === 'undefined')
+export const isNull = (x) => (x === null || typeof x === 'undefined')
 
 // parseObject :: (a) -> (a*)
 // Filter out any object properties will a null value
