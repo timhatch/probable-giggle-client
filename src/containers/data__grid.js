@@ -63,17 +63,17 @@ class DataGrid extends React.Component {
     // TODO: Read this from a competition definition
     let numResults = this.props.rootStore.routes[0] < 2 ? 5 : 4
     let tableWidth = 408 + (48 * numResults)
-    this.rows      = this.handleFilter()
+    let param      = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
+    this.rows      = this.handleFilter(param)
     return (
       <div style={{ width: tableWidth, margin: '0 auto' }}>
         <ReactDataGrid
-          columns={this.setColumns(numResults)}
+          columns={this.setColumns(param, numResults)}
           rowGetter={(i) => this.rows[i]}
           rowsCount={this.rows.length}
           minHeight={this.setHeight()}
           enableCellSelect={true} 
           onGridRowsUpdated={this.handleRowChange}
-          enableDragAndDrop={false}
         />
       </div>
     )
@@ -82,10 +82,9 @@ class DataGrid extends React.Component {
   // setColumns :: (int) -> (int)
   // Return an array defining the properties for each column, inserting within that array (num)
   // results cells
-  setColumns = (num) => {
+  setColumns = (param, num) => {
     const blocs   = Array.from(Array(num), (x, i) => `p${i+1}`)
     const results = blocs.map((x) => ({ key: x, name: x, editable: true, width: 48 }))
-    const param   = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     return personalia(param).concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
   }
 
@@ -99,9 +98,8 @@ class DataGrid extends React.Component {
   // (a) return the first 60 results
   // (b) if the string is all-caps and at least 2 chars long, filter by nation
   // (c) otherwise return all results which match the filter
-  handleFilter = () => {
+  handleFilter = (param) => {
     const string  = this.props.rootStore.fString.get()
-    const param   = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     const sortfn  = sortBy(param)
     const results = dataMapper(this.props.rootStore.results).sort(sortfn)
 
