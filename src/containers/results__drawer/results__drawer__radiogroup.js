@@ -10,8 +10,6 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 const override = { label: 'FormLabelTypography' }
 
 class RadioButtonsGroup extends React.Component {
-  state = {value: 'start_order' }
-
   render() {
     let checked = this.props.rootStore.uistate.get('resultsSortParam') || 'nation'
     return (
