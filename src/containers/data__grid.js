@@ -115,6 +115,8 @@ class DataGrid extends React.Component {
   // NOTE: Think about how to cache results to allow for offline editing or editing where the 
   // connection is poor
   handleRowChange = ({ fromRow, toRow, updated }) => {
+    if (fromRow !== toRow) return   // Don't allow cross-row actions
+
     let { wet_id, grp_id, route, per_id } = this.rows.slice()[fromRow]
     let result_jsonb = this.mergeResults({ fromRow, updated })
     this.props.rootStore.updateResults({ wet_id, grp_id, route, per_id, result_jsonb })
