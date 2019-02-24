@@ -55,6 +55,9 @@ class Store {
   get discipline()      { return this.http.discipline(this.grpid)  }
   get gender()          { return this.http.gender(this.grpid) }
 
+  // Placeholder accessor to return the number of boulders in the round
+  get blocs()           { return this.requests.get('routes')[0] < 2 ? 5 : 4 }
+
   // _composeXHRParams :: () -> ([a])
   // Iterate over the categories and routes within the requests Map, producing an array of
   // requests object for each individual eGroupware query
