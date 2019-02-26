@@ -73,7 +73,9 @@ class PersonSelector extends React.Component {
 
   confirmResult = () => {
     let bloc   = 'p' + this.props.rootStore.uistate.get('currentBoulder')
-    let result = this.props.person.result_jsonb[bloc]
+    let result = isNull(this.props.person.result_jsonb) 
+      ? null
+      : this.props.person.result_jsonb[bloc]
 
     if (!isNull(result)) {
       let { wet_id, grp_id, route, per_id } = this.props.person
