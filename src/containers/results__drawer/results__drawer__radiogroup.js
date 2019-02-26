@@ -11,7 +11,7 @@ const override = { label: 'FormLabelTypography' }
 
 class RadioButtonsGroup extends React.Component {
   render() {
-    let checked = this.props.rootStore.uistate.get('resultsSortParam') || 'nation'
+    let checked = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     return (
       <FormControl style={{ marginLeft: '2rem' }} >
           <RadioGroup
