@@ -9,8 +9,8 @@ const Title = styled.div`
 
 class TitleBar extends React.Component {
   render() {
-    let round = ['Q','S','F'][this.props.rootStore.uistate.get('routes')]
-    let gendr = ['F','M'][this.props.rootStore.uistate.get('cats')]
+    let round = ['Q','S','F'][this.props.rootStore.uistate.get('routes') || 0]
+    let gendr = ['F','M'][this.props.rootStore.uistate.get('cats') || 0]
     let bloc  = this.props.rootStore.uistate.get('currentBoulder') || 1
     return (
       <Title>
