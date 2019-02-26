@@ -27,8 +27,8 @@ const resultsParser = (route) => route.map((person) => {
   return Object.assign({result}, person, ...array)
 })
 
-// byStarter :: (a, b) -> (a, b)
-// Lambda/block to order array in place by start-order, then lastname and finally
+// sortBy :: (p) -> (a, b) -> (a, b)
+// Lambda/block to order array in place by param 'p', then lastname and finally
 // (if no start-order or same names, by per_id (which must be unique)
 const sortBy = (param) => (a, b) => {
   if (a[param] > b[param]) return 1
@@ -60,8 +60,7 @@ class DataGrid extends React.Component {
   // render an array of results. Set the width of the enclosing element from the 
   // numebr of boulders
   render() {
-    // TODO: Read this from a competition definition
-    let numResults = this.props.rootStore.routes[0] < 2 ? 5 : 4
+    let numResults = this.props.rootStore.blocs   // TODO: Read this from a competition definition
     let tableWidth = 408 + (48 * numResults)
     let param      = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     this.rows      = this.handleFilter(param)
