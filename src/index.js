@@ -1,11 +1,11 @@
-import React    from 'react';
+import React        from 'react';
 import ReactDOM     from 'react-dom';
 
 import { Provider } from 'mobx-react'
 
 import HeaderBar    from './containers/header__bar'
 import DataGrid     from './containers/data__grid'
-import ResultsDrawer  from './containers/results__drawer/results__drawer'
+import ResultsDrawer  from './containers/results__drawer/results__drawer-desktop'
 
 import Store        from './store' 
 
