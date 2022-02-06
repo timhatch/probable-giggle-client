@@ -9,7 +9,7 @@ import ClearIcon              from '@material-ui/icons/Clear';
 
 import Selector               from './results__drawer__selectors'
 import Controller             from './results__drawer__iconbutton'
-import RadioButtonsGroup      from './results__drawer__radiogroup'
+import SortOrderOptions       from './sort__options'
 
 import {comps, routes, cats}  from '../../params'
 
@@ -44,9 +44,7 @@ class ResultsDrawer extends React.Component {
       <Selector items={comps}  name='comp' label='Competition' />
       <Selector items={routes} name='routes' label='Route' />
       <Selector items={cats} name='cats' label='Categories'/>
-      <Divider style={{ marginBottom: '8px' }}/>
-      <StyledHeader>Sort options</StyledHeader>
-      <RadioButtonsGroup />
+      <SortOrderOptions />
     </Wrapper>
   )
 }
