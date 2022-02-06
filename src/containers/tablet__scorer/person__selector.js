@@ -22,6 +22,11 @@ const Wrapper = styled.div`
 
   border-bottom   : 1px solid #ddd;
 `
+const Current = styled.div`
+  display         : flex;
+  flex-direction  : row;
+  align-items     : center;
+`
 const Starter = styled.div`
   display         : inline-block;
   width           : 2rem;
@@ -46,10 +51,10 @@ class PersonSelector extends React.Component {
     return (
       <Wrapper>
         <IconButton onClick={this.decrement}><ArrowBack /></IconButton>
-        <div>
+        <Current>
           <Starter>{this.props.value}</Starter>
           <Person>{name}</Person>
-        </div>
+        </Current>
         <IconButton onClick={this.increment}><ArrowForward /></IconButton>
       </Wrapper>
     )
@@ -67,8 +72,10 @@ class PersonSelector extends React.Component {
   }
 
   confirmResult = () => {
-    let bloc   = 'p' + this.props.rootStore.uistate.get('currentBoulder')
-    let result = this.props.person.result_jsonb[bloc]
+    let bloc   = 'p' + (this.props.rootStore.uistate.get('currentBoulder') || 1)
+    let result = isNull(this.props.person.result_jsonb)
+      ? null
+      : this.props.person.result_jsonb[bloc]
 
     if (!isNull(result)) {
       let { wet_id, grp_id, route, per_id } = this.props.person
