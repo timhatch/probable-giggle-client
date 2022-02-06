@@ -1,15 +1,15 @@
-import React      from 'react';
+import React                  from 'react';
 
-import { inject, observer } from 'mobx-react'
-import styled               from 'styled-components'
+import {inject, observer}     from 'mobx-react'
+import styled                 from 'styled-components'
 
-import Drawer     from '@material-ui/core/Drawer';
-import Divider    from '@material-ui/core/Divider';
-import ClearIcon  from '@material-ui/icons/Clear';
+import Drawer                 from '@material-ui/core/Drawer';
+import Divider                from '@material-ui/core/Divider';
+import ClearIcon              from '@material-ui/icons/Clear';
 
-import Selector        from './results__drawer__selectors'
-import Controller      from './results__drawer__iconbutton'
-import BoulderSelector from '../tablet__scorer/boulder__selector'
+import Selector               from './results__drawer__selectors'
+import Controller             from './results__drawer__iconbutton'
+import BoulderSelector        from '../tablet__scorer/boulder__selector'
 
 import {comps, routes, cats}  from '../../params'
 
