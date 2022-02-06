@@ -7,6 +7,12 @@ import HeaderBar    from './containers/header__bar'
 import DataGrid     from './containers/data__grid'
 import ResultsDrawer  from './containers/results__drawer/results__drawer'
 
+// Tablet implementation
+// import HeaderBar    from './containers/header__bar-tablet'
+// import TabletScreen   from './containers/tablet__scorer/tablet__screen'
+// import ResultsDrawer  from './containers/results__drawer/results__drawer-tablet'
+// NOTE: Replace <DateGrid /> with <TabletScreen />
+
 import Store        from './store' 
 
 import HTTPService  from './services/perseus-accessor'
