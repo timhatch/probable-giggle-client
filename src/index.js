@@ -1,11 +1,11 @@
-import React        from 'react';
+import React    from 'react';
 import ReactDOM     from 'react-dom';
 
 import { Provider } from 'mobx-react'
 
-import HeaderBar      from './containers/header__bar-tablet'
-import TabletScreen   from './containers/tablet__scorer/tablet__screen'
-import ResultsDrawer  from './containers/results__drawer/results__drawer-tablet'
+import HeaderBar    from './containers/header__bar'
+import DataGrid     from './containers/data__grid'
+import ResultsDrawer  from './containers/results__drawer/results__drawer'
 
 import Store        from './store' 
 
@@ -21,7 +21,7 @@ ReactDOM.render(
   <Provider rootStore={store}>
     <div style={{ marginTop: 64 }}>
       <HeaderBar />
-      <TabletScreen />
+      <DataGrid />
       <ResultsDrawer />
     </div>
   </Provider>, document.getElementById('root')
