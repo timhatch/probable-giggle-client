@@ -1,18 +1,24 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+node_modules
+coverage
+
 # dependencies
-/node_modules
 /.pnp
 .pnp.js
-
-# testing
-/coverage
 
 # production
 /build
 
 # misc
-.DS_Store
 .env.local
 .env.development.local
 .env.test.local
@@ -22,4 +28,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# MacOS cruft
+.DS_Store
+
+# VIM cruft
+*.swo
 *.swp
