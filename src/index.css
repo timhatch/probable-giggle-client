@@ -9,5 +9,13 @@ body {
 }
 
 .FormLabelTypography {
-  font              : 0.85rem/0.85rem SansRegular, sans-serif !important;  
+  font : 0.85rem/0.85rem SansRegular, sans-serif !important;  
+}
+
+.undecorate {
+  text-decoration: none;
+}
+
+.wx12 {
+  width: 12rem;
 }
