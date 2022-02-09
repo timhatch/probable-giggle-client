@@ -11,12 +11,12 @@ function Home() {
         <h2>Results Editors</h2>
       </main>
       <nav>
-        <Button variant="outlined"  className='undecorate wx12'>
-          <Link to="/desktop">Desktop Scorer</Link>
+        <Button variant="outlined"  style={{width: '12rem'}}>
+          <Link to="/desktop" style={{textDecoration: 'none'}}>Desktop Scorer</Link>
         </Button>
           <br />
-        <Button variant="outlined" className='undecorate wx12'>
-          <Link to="/mobile">Tablet Scorer</Link>
+        <Button variant="outlined" style={{width: '12rem'}}>
+          <Link to="/mobile"  style={{textDecoration: 'none'}}>Tablet Scorer</Link>
         </Button>
       </nav>
     </Fragment>
