@@ -13,7 +13,7 @@ function Home() {
       </main>
       <nav>
         <h3>Registration List Uploader</h3>
-        <UploadForm url='/registration/file' />
+        <UploadForm url='/registration/comp' />
         <h3>Startlist Uploader</h3>
         <UploadForm url='/startlist/file' />
         <h3>Results Editors</h3>
