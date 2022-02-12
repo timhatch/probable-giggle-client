@@ -25,6 +25,7 @@ class PerseusHTTPService {
     let response = await axios.get(session_url)
     console.log(response.data)
   }
+
   // Fetch the result list for a specific comp/category/route combination
   // @params = comp (WetId), cat (GrpId) and route (route)
   static async fetchResults(query) {
@@ -38,9 +39,19 @@ class PerseusHTTPService {
     }
   }
 
+  // Update results given some data payload (in JSON format)
   static async updateResults(data) {
     try {
       let response = await update(data)
+      return response
+    } catch (e) {
+      return null
+    }
+  }
+
+  static async updateLockState({wet_id, grp_id, route, locked}) {
+    try {
+      let response = await axios.post(`${results_url}/lock`, {wet_id, grp_id, route, locked})
       return response
     } catch (e) {
       return null

@@ -100,6 +100,14 @@ class Store {
       this.fetchResults()
     }
   }
+
+  async lockResults(newstate) {
+    const response = await this.http.updateLockState(newstate)
+    if (response.status === 200) {
+      this.fetchResults()
+    }
+  } 
+
   // cancelRequests :: () => ()
   // Cancel any in-flight fetch requests. Requires the http service to support
   // cancellable requests or to provide a null method
