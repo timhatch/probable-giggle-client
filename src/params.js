@@ -9,7 +9,7 @@ export const comps = [
 
 // route menuitems
 export const routes = [ 
-  { key: 0, values: [0], name: 'Qualification' }, 
+  { key: 0, values: [1], name: 'Qualification' }, 
   { key: 1, values: [2], name: 'Semifinal' }, 
   { key: 2, values: [3], name: 'Final' }
 ]
