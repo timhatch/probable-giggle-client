@@ -101,12 +101,23 @@ class Store {
     }
   }
 
-  async lockResults(data) {
-    const response = await this.http.updateLockState(data)
+  // Lock a set of results and reload the results (in order to refresh application state)
+  // See perseus-accessor for a description of @params
+  async lockResults(params) {
+    const response = await this.http.updateLockState(params)
     if (response.status === 200) {
       this.fetchResults()
     }
   } 
+
+  // Reset/delete a set of results and reload the results (in order to refresh application state)
+  // See perseus-accessor for a description of @action, @params
+  async deleteResults(action, params) {
+    const response = await this.http.delete(action, params)
+    if (response.status === 200) {
+      this.fetchResults()
+    }
+  }
 
   // cancelRequests :: () => ()
   // Cancel any in-flight fetch requests. Requires the http service to support

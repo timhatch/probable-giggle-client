@@ -49,10 +49,23 @@ class PerseusHTTPService {
     }
   }
 
-  // @data = {wet_id, grp_id, route, locked}
-  static async updateLockState(data) {
+  // Lock or unlock a set of results defined by @params
+  // @params = :wet_id, :grp_id, :route, :locked, [:per_id]
+  static async updateLockState(params) {
     try {
-      const response = await axios.post(`${results_url}/lock`, data)
+      const response = await axios.post(`${results_url}/lock`, params)
+      return response
+    } catch (e) {
+      return {status: 500}
+    }
+  }
+
+  // Perform a reset or delete @action on a set of results defined by @params
+  // @action = reset | delete
+  // @params = :wet_id, :grp_id, :route, [:per_id]
+  static async delete(action, params) {
+    try {
+      const response = await axios.put(`${results_url}/${action}`, params)
       return response
     } catch (e) {
       return {status: 500}
