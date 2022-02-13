@@ -49,12 +49,13 @@ class PerseusHTTPService {
     }
   }
 
-  static async updateLockState({wet_id, grp_id, route, locked}) {
+  // @data = {wet_id, grp_id, route, locked}
+  static async updateLockState(data) {
     try {
-      let response = await axios.post(`${results_url}/lock`, {wet_id, grp_id, route, locked})
+      const response = await axios.post(`${results_url}/lock`, data)
       return response
     } catch (e) {
-      return null
+      return {status: 500}
     }
   }
 }

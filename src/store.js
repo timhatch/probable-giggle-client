@@ -101,8 +101,8 @@ class Store {
     }
   }
 
-  async lockResults(newstate) {
-    const response = await this.http.updateLockState(newstate)
+  async lockResults(data) {
+    const response = await this.http.updateLockState(data)
     if (response.status === 200) {
       this.fetchResults()
     }
