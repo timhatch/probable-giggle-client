@@ -8,7 +8,8 @@ function LockStateButton({rootStore}) {
 
   const handleClick = (e) => {
     const locked = isLocked(rootStore.results) ? false : true
-    const {wet_id, grp_id, route} = getParams(rootStore.results)
+    const {wet_id, grp_id, route} = setParams(rootStore)
+
     rootStore.lockResults({wet_id, grp_id, route, locked})
   }
   
@@ -21,14 +22,19 @@ function LockStateButton({rootStore}) {
 
 export default inject('rootStore')(observer(LockStateButton))
 
+// Consider the state of the dataset to be locked if any result is locked
 function isLocked(results) {
   const data = [...results.keys()].flatMap((x) => results.get(x))
   
   return data.map(({locked}) => locked).includes(true)
 }
 
-function getParams(results) {
-  return [...results.keys()].flatMap((x) => results.get(x))[0]
+// Get state data for the current competition/category/round
+function setParams(rootStore) {
+  const wet_id = rootStore.comp
+  const grp_id = rootStore.grpid
+  const route  = rootStore.routes[0]
+  return {wet_id, grp_id, route}
 }
 
 
