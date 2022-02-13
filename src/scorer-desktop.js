@@ -6,6 +6,7 @@ import ResultsDrawer  from './containers/results__drawer/results__drawer'
 
 import LockStateButton  from './containers/lockstate__button'
 import ActionButton     from './containers/action__button'
+import SaveButton       from './containers/save__button'
 
 function ScorerDesktop() {
   return (
@@ -16,6 +17,7 @@ function ScorerDesktop() {
       <LockStateButton />
       <ActionButton actiontext='reset' />
       <ActionButton actiontext='delete' />
+      <SaveButton />
     </div>
   );
 }
