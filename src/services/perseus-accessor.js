@@ -53,7 +53,7 @@ class PerseusHTTPService {
   // @params = :wet_id, :grp_id, :route, :locked, [:per_id]
   static async updateLockState(params) {
     try {
-      const response = await axios.post(`${results_url}/lock`, params)
+      const response = await axios.put(`${results_url}/lock`, params)
       return response
     } catch (e) {
       return {status: 500}
