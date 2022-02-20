@@ -16,6 +16,8 @@ function Home() {
         <UploadForm url='/registration/comp' />
         <h3>Startlist Uploader</h3>
         <UploadForm url='/startlist/file' />
+        <h3>Results Uploader</h3>
+        <UploadForm url='/results/file' />
         <h3>Results Editors</h3>
         <Button variant="outlined"  style={{width: '12rem'}}>
           <Link to="/desktop" style={{textDecoration: 'none'}}>Desktop Scorer</Link>
