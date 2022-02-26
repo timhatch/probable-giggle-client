@@ -4,14 +4,17 @@ import {observer, inject} from 'mobx-react'
 
 import Button             from '@material-ui/core/Button'
 
-function ActionButton({rootStore, actiontext}) {
+function ActionButton({rootStore, actiontext, color}) {
   const handleClick = (e) => {
     const params = setParams(rootStore)
     rootStore.deleteResults(actiontext, params)
   }
   
   return (
-    <Button variant="outlined" size='small' style={{width: '8rem'}} onClick={handleClick}>{actiontext}</Button>
+    <Button size='small' 
+            color='secondary' 
+            style={{width: '5rem', margin: '0 0.5rem'}} 
+            onClick={handleClick}>{actiontext}</Button>
   )
 }
 
