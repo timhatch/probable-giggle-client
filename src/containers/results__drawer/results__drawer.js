@@ -11,6 +11,10 @@ import Selector               from './results__drawer__selectors'
 import Controller             from './results__drawer__iconbutton'
 import SortOrderOptions       from './sort__options'
 
+import LockStateButton        from '../buttons/lockstate__button'
+import ActionButton           from '../buttons/action__button'
+import SaveButton             from '../buttons/save__button'
+
 import {comps, routes, cats}  from '../../params'
 
 const Wrapper = styled.div`
@@ -21,6 +25,16 @@ const StyledHeader = styled.div`
   margin            : 1rem 0 1rem 2rem;
   color             : rgba(0, 0, 0, 0.541176);
 `
+
+const Administration = styled.div`
+  display:          flex;
+  flex-wrap:        wrap;
+  flex-direction:   row;
+  justify-content:  space-around;
+
+  margin:           0.5rem 1rem;
+`
+
 class ResultsDrawer extends React.Component {
   render() {
 
@@ -45,6 +59,19 @@ class ResultsDrawer extends React.Component {
       <Selector items={routes} name='routes' label='Route' />
       <Selector items={cats} name='cats' label='Categories'/>
       <SortOrderOptions />
+      <Divider style={{ marginBottom: '8px' }}/>
+      <StyledHeader>Status</StyledHeader>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}> 
+        <LockStateButton />
+      </div>
+      <StyledHeader>Administration</StyledHeader>
+      <Administration> 
+        <SaveButton />
+      </Administration>
+      <Administration> 
+        <ActionButton actiontext='reset' color='warning' />
+        <ActionButton actiontext='delete' />
+      </Administration>
     </Wrapper>
   )
 }
