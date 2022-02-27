@@ -26,7 +26,7 @@ function UploadFiles({url}) {
   }
 
   return (
-    <div style={{backgroundColor: 'azure', padding: '2rem'}}>
+    <div>
       <Chip label='upload file' style={{width: '6rem'}} onClick={handleSelect} />
       <span style={{marginLeft: '1rem', fontSize: 'small'}}>{file ? file.name : 'no file selected'}</span>
       <ConnectionStatusMessage {...{message, setMessage}} />

@@ -6,6 +6,7 @@ import {Provider}     from 'mobx-react'
 import Home           from './app'
 import ScorerTablets  from './scorer-tablets'
 import ScorerDesktop  from './scorer-desktop'
+import Administration from './administration'
 
 import {BrowserRouter}  from "react-router-dom";
 import {Routes, Route}  from "react-router-dom";
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/" element={<Home />} />
         <Route path="mobile" element={<ScorerTablets />} />
         <Route path="desktop" element={<ScorerDesktop />} />
+        <Route path="admin" element={<Administration />} />
       </Routes>
     </BrowserRouter>
   </Provider>, document.getElementById('root')
