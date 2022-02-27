@@ -1,19 +1,19 @@
 import React        from 'react'
 import PropTypes    from 'prop-types'
 
-import { inject, observer } from 'mobx-react'
+import {inject, observer} from 'mobx-react'
 
-import styled         from 'styled-components'
-import { Swipeable }  from 'react-swipeable'
+import styled       from 'styled-components'
+import {Swipeable}  from 'react-swipeable'
 
 import SwipeCell    from './scorer__cell'
-import { isNull }   from '../../services/reducer'
+import {isNull}     from '../../services/reducer'
 
 const Wrapper = styled(Swipeable)`
   font-size         : ${props => props.scale};      
 `
 
-const options = { trackMouse: true }
+const options = {trackMouse: true}
 
 class TabletScorer extends React.Component {
   constructor(props) {
@@ -44,6 +44,14 @@ class TabletScorer extends React.Component {
     if (e.dir === 'Left')  this.setResult(type, null) 
   }
 
+  // TODO: Deal with the case where no zone has been entered
+  setResult = (key, val) => {
+    if (isNull(key)) return
+
+    if (isNull(val))              this.update(key, val)
+    if (isNull(this.result[key])) this.update(key, val)
+  }
+
   handleVSwipe = (e) => {
     let val = isNull(this.result.a) ? 0 : this.result.a
     if (e.dir === 'Up')   this.setAttempts(val - 1)
@@ -55,18 +63,12 @@ class TabletScorer extends React.Component {
     this.update('a', atts)
   }
 
-  // TODO: Deal with the case where no zone has been entered
-  setResult = (key, val) => {
-    if (isNull(val))              this.update(key, val)
-    if (isNull(this.result[key])) this.update(key, val)
-  }
-
   update = (key, val) => {
-    let { wet_id, grp_id, route, per_id } = this.props.person
-    let result       = { ...this.result, [key]: val }
-    let result_jsonb = { ...this.props.person.result_jsonb, [this.bloc]: result }
+    let {wet_id, grp_id, route, per_id} = this.props.person
+    let result       = {...this.result, [key]: val}
+    let result_jsonb = {...this.props.person.result_jsonb, [this.bloc]: result}
 
-    this.props.rootStore.updateResults({ wet_id, grp_id, route, per_id, result_jsonb })
+    this.props.rootStore.updateResults({wet_id, grp_id, route, per_id, result_jsonb})
   }
 }
 
