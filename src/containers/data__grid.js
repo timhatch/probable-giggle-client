@@ -10,6 +10,8 @@ import {resultStringToHash} from '../services/reducer'
 // Titles for display columns
 const TITLE = { per_id: 'ID', start_order: 'Order', result_rank: 'Rank' }
 
+const cellWidth = 60
+
 // Constant defining core cells for display
 const personalia = (param) => ([
   { width: 60, key: param,       name: TITLE[param] },
@@ -69,7 +71,7 @@ class DataGrid extends React.Component {
   render() {
     // TODO: Read this from a competition definition
     let numResults = this.props.rootStore.routes[0] < 2 ? 5 : 4
-    let tableWidth = 408 + (48 * numResults)
+    let tableWidth = 408 + (cellWidth * numResults)
     let param      = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     this.rows      = this.handleFilter(param)
     return (
@@ -93,7 +95,7 @@ class DataGrid extends React.Component {
   // sig: (String param, Integer num) -> (Array[Hash])
   setColumns = (param, num) => {
     const blocs   = Array.from(Array(num), (x, i) => `p${i+1}`)
-    const results = blocs.map((x) => ({ key: x, name: x, editable: true, width: 48 }))
+    const results = blocs.map((x) => ({ key: x, name: x == 'p5' ? 'r1' : x, editable: true, width: cellWidth }))
     return personalia(param).concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
   }
 
