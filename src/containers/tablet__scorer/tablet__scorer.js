@@ -8,9 +8,10 @@ import {Swipeable}  from 'react-swipeable'
 
 import SwipeCell    from './scorer__cell'
 import {isNull}     from '../../services/reducer'
+import {points}     from '../../services/reducer'
 
 const Wrapper = styled(Swipeable)`
-  font-size         : ${props => props.scale};      
+  font-size : ${props => props.scale};      
 `
 
 const options = {trackMouse: true}
