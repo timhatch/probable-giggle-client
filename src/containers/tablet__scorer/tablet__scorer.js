@@ -55,8 +55,8 @@ class TabletScorer extends React.Component {
 
   handleVSwipe = (e) => {
     let val = isNull(this.result.a) ? 0 : this.result.a
-    if (e.dir === 'Up')   this.setAttempts(val - 1)
-    if (e.dir === 'Down') this.setAttempts(val + 1)
+    if (e.dir === 'Down')   this.setAttempts(val - 1)
+    if (e.dir === 'Up') this.setAttempts(val + 1)
   } 
 
   setAttempts = (val) => {
