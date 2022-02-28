@@ -1,9 +1,9 @@
-import React, {Fragment}  from 'react'
-import styled             from 'styled-components'
+import React   from 'react'
+import styled  from 'styled-components'
 
-import {Link}             from 'react-router-dom'
+import {Link}  from 'react-router-dom'
 
-import Button             from '@material-ui/core/Button'
+import Button  from '@material-ui/core/Button'
 
 const VFlex = styled.div`
   display: flex;
