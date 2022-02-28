@@ -67,7 +67,18 @@ class TabletScorer extends React.Component {
 
   update = (key, val) => {
     let {wet_id, grp_id, route, per_id} = this.props.person
+
+    // NOTE: This will update or COMPLETELY zero the score on a horizontal swipe
+    if (key !== 'a')  {
+      if (val === null) { 
+        this.result.n = val 
+      } else {
+        this.result.n = points[key] - ((val - 1) * 0.1)
+      }
+    }
+
     let result       = {...this.result, [key]: val}
+    console.log(result)
     let result_jsonb = {...this.props.person.result_jsonb, [this.bloc]: result}
 
     this.props.rootStore.updateResults({wet_id, grp_id, route, per_id, result_jsonb})
