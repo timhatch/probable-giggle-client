@@ -2,9 +2,10 @@
 export const comps = [
   { key: 0, values: 1, name: 'Test Comp'},
   { key: 1, values: 4, name: '2018 CWIF' },
-  { key: 2, values: 6, name: 'Team Selection' },
+  { key: 2, values: 6, name: 'GB Selection' },
   { key: 3, values: 7, name: '2019 CWIF' },
-  { key: 4, values: 8, name: '2022 CWIF' }
+  { key: 4, values: 8, name: '2022 BCN Test' },
+  { key: 5, values: 9, name: '2022 CWIF' }
 ]
 
 // route menuitems
