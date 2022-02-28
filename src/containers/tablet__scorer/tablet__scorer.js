@@ -18,7 +18,7 @@ const options = {trackMouse: true}
 class TabletScorer extends React.Component {
   constructor(props) {
     super(props)
-    this.scale = Math.round(14 * window.innerHeight / 596) + 'px'
+    this.scale = Math.round(14 * window.innerHeight / 800) + 'px'
   }
 
   render() {
@@ -32,7 +32,8 @@ class TabletScorer extends React.Component {
     return (
       <Wrapper onSwiped={this.handleVSwipe} {...options} scale={this.scale}>
         <SwipeCell result={this.result.t} onSwiped={this.handleHSwipe('t')} title='top'  />
-        <SwipeCell result={this.result.b} onSwiped={this.handleHSwipe('b')} title='zone' />
+        <SwipeCell result={this.result.Z} onSwiped={this.handleHSwipe('Z')} title='zone2' />
+        <SwipeCell result={this.result.b} onSwiped={this.handleHSwipe('b')} title='zone1' />
         <SwipeCell result={this.result.a} onSwiped={this.handleHSwipe('a')} title='attempts' />
       </Wrapper>
     )
