@@ -1,9 +1,9 @@
 import React          from 'react'
-import styled   from 'styled-components'
+import styled         from 'styled-components'
 
 import UploadForm     from './uploader'
 
-import Paper           from '@material-ui/core/Paper';
+import Paper          from '@material-ui/core/Paper';
 
 const round = `wet_id: Integer
 grp_id: Integer
