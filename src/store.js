@@ -17,9 +17,9 @@ class Store {
     // Development mode (can comment this out for production)
     // configure({ enforceActions: true})
     const disp = discipline || 'boulder'
-    const comp = 4
-    const cats = [5]
-    const routes = [0]
+    const comp = 8
+    const cats = [6]
+    const routes = [1]
 
     // Non-observable class properties
     this.http = httpservice
