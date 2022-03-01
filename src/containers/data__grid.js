@@ -70,7 +70,7 @@ class DataGrid extends React.Component {
   // numebr of boulders
   render() {
     // TODO: Read this from a competition definition
-    let numResults = this.props.rootStore.routes[0] < 2 ? 5 : 4
+    let numResults = 5 // this.props.rootStore.routes[0] < 2 ? 5 : 4
     let tableWidth = 408 + (cellWidth * numResults)
     let param      = this.props.rootStore.uistate.get('resultsSortParam') || 'start_order'
     this.rows      = this.handleFilter(param)
