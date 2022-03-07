@@ -25,26 +25,17 @@ export const resultStringToHash = (x) => {
   let string_b = x.match(/(z|b)([0-9]{1,})/)
   let string_Z = x.match(/(Z)([0-9]{1,})/)
   let string_t = x.match(/(t)([0-9]{1,})/)
-  let string_n = x.match(/(n)(\d*\.?\d*)/)
+  let string_h = x.match(/(h)(\d*\.?\d*)/)
 
   // If a match exists, parse the match object and set the relevant return values
   let a = string_a ? parseInt(string_a[2], 10) : null
   let t = string_t ? parseInt(string_t[2], 10) : null
   let b = string_b ? parseInt(string_b[2], 10) : null
   let Z = string_Z ? parseInt(string_Z[2], 10) : null
-
-  // console.log({a, b, Z, t})
-  // Calculate the points for some given score
-  let sb = !!b ? points.b - ((b - 1) * 0.1) : 0
-  let sZ = !!Z ? points.Z - ((Z - 1) * 0.1) : 0
-  let st = !!t ? points.t - ((t - 1) * 0.1) : 0
-
-  // If a points value has been given, use that and otherwise used the "best" value
-  let n = string_n ? parseFloat(string_n[2]) : Math.max(sb, sZ, st)
-  // console.log({sb, sZ, st, n})
+  let h = string_h ? parseInt(string_h[2], 10) : null
 
   // Return the resulting object`
-  return parseObject({a, b, Z, t, n})
+  return parseObject({a, b, Z, t, h})
 }
 
 // Parse a result object { a: value, b: value, t: value }, and return a string
