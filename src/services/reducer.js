@@ -65,7 +65,7 @@ export const cellResultAsString = (x) => {
 //
 // sig: (Array[Integer?]) -> (String?)
 // TODO: Rename this heatResultAsString
-export const heatResultAsString = (arr) => isNull(arr[0]) ? null : `${arr[0] / 10}`
+export const heatResultAsString = (arr) => isNull(arr[0]) ? null : `${(arr[0] / 10).toFixed(1)}`
 
 // Function aLiases (check for redundancy)
 export const resultAsString = cellResultAsString
