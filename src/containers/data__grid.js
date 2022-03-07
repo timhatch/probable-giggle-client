@@ -95,7 +95,7 @@ class DataGrid extends React.Component {
   // sig: (String param, Integer num) -> (Array[Hash])
   setColumns = (param, num) => {
     const blocs   = Array.from(Array(num), (x, i) => `p${i+1}`)
-    const results = blocs.map((x) => ({ key: x, name: x == 'p5' ? 'r1' : x, editable: true, width: cellWidth }))
+    const results = blocs.map((x) => ({ key: x, name: x === 'p5' ? 'r1' : x, editable: true, width: cellWidth }))
     return personalia(param).concat(results).concat([{ key: 'result', name: 'Result', width: 96 }])
   }
 
